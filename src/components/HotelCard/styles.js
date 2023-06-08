@@ -1,5 +1,12 @@
 import {StyleSheet} from 'react-native';
-import {FontSize, ScreenHeight, ScreenWidth} from '../../constants/Styling';
+import {
+  Borders,
+  FontSize,
+  Margin,
+  ScreenHeight,
+  ScreenWidth,
+  Sizes,
+} from '../../constants/Styling';
 import {Color} from '../../constants/Colors';
 
 export default () =>
@@ -7,9 +14,9 @@ export default () =>
     container: {
       width: 290,
       height: 435,
-      backgroundColor: 'yellow',
-      marginHorizontal: 15,
-      borderRadius: 20,
+      marginHorizontal: Margin.m2,
+      borderRadius: Borders.b3,
+      overflow: 'hidden',
     },
     rateWrapper: {
       flexDirection: 'row',
@@ -18,31 +25,36 @@ export default () =>
       height: 36,
       alignItems: 'center',
       justifyContent: 'center',
-      margin: 20,
+      margin: Margin.m3,
       alignSelf: 'flex-end',
-      borderRadius: 20,
+      borderRadius: Borders.b3,
     },
     rateImg: {
-      width: 20,
-      height: 20,
-      marginEnd: 10,
+      width: Sizes.s9,
+      height: Sizes.s9,
+      marginEnd: Sizes.s1,
     },
     rateText: {
       fontWeight: '600',
       color: Color.white,
     },
+    img: {
+      width: '100%',
+      height: '100%',
+    },
     hotelName: {
       fontWeight: '700',
-      fontSize: FontSize.h4,
+      fontSize: FontSize.h6,
       color: Color.white,
     },
     hotelInfo: {
       color: Color.white,
       paddingTop: 9,
+      fontSize: FontSize.h2,
     },
     textWrapper: {
       position: 'absolute',
-      bottom: 30,
-      left: 35,
+      bottom: Sizes.s14,
+      left: Sizes.s17,
     },
   });

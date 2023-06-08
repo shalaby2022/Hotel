@@ -1,10 +1,19 @@
-import {View, Text, ImageBackground} from 'react-native';
-import React from 'react';
+import {ImageBackground} from 'react-native';
+import React, {useEffect} from 'react';
 import styles from './styles';
-import {IMSGES} from '../../constants/Images';
+import {IMAGES} from '../../constants/Images';
+import {NavigateToOnboarding} from '../../Navigations/Navigators';
 
-const Splash = () => {
-  return <ImageBackground source={IMSGES.splash} style={styles().container} />;
+const Splash = ({navigation}) => {
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      NavigateToOnboarding(navigation);
+    }, 2000);
+
+    return () => clearInterval(timer);
+  });
+
+  return <ImageBackground source={IMAGES.splash} style={styles().container} />;
 };
 
 export default Splash;

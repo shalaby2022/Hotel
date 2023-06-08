@@ -1,7 +1,7 @@
 import {View, Text, TextInput, TouchableOpacity, Image} from 'react-native';
 import React, {useState} from 'react';
 import styles from './styles';
-import {IMSGES} from '../../constants/Images';
+import {IMAGES} from '../../constants/Images';
 import {Color} from '../../constants/Colors';
 import Button from '../../components/Button';
 import {ScreenWidth} from '../../constants/Styling';
@@ -68,7 +68,7 @@ const SignUp = () => {
               onPress={toggleShowPass}
               style={styles().iconWrapper}>
               <Image
-                source={showPassword ? IMSGES.show : IMSGES.hide}
+                source={showPassword ? IMAGES.show : IMAGES.hide}
                 style={styles().icon}
               />
             </TouchableOpacity>

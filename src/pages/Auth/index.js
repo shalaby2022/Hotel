@@ -1,7 +1,7 @@
 import {View, Text, Image, TouchableOpacity} from 'react-native';
 import React, {useState} from 'react';
 import styles from './styles';
-import {IMSGES} from '../../constants/Images';
+import {IMAGES} from '../../constants/Images';
 import Login from './Login';
 import SignUp from './Register';
 
@@ -11,7 +11,7 @@ const Auth = () => {
     <View style={styles().container}>
       {/* Logo */}
       <View style={styles().imgWrapper}>
-        <Image source={IMSGES.logo} style={styles().img} />
+        <Image source={IMAGES.logo} style={styles().img} />
       </View>
       {/* screenBtns */}
       <View style={styles().btnsWrapper}>

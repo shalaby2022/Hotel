@@ -1,26 +1,26 @@
 import {StyleSheet} from 'react-native';
-import {FontSize} from '../../constants/Styling';
+import {FontSize, Margin, Padding, Sizes} from '../../constants/Styling';
 import {Color} from '../../constants/Colors';
 
 export default () =>
   StyleSheet.create({
     container: {
       flex: 1,
-      paddingTop: 51,
+      paddingTop: Sizes.s24,
       backgroundColor: Color.bgColor,
     },
     headerText: {
       fontWeight: '700',
       fontSize: FontSize.h5,
       color: Color.black,
-      marginTop: 66,
-      paddingStart: 26,
+      marginTop: Sizes.s26,
+      paddingStart: Padding.p6,
     },
     infoText: {
       fontSize: FontSize.h1,
       color: Color.black,
-      marginTop: 20,
-      paddingStart: 26,
-      lineHeight: 28,
+      marginTop: Margin.m3,
+      paddingStart: Padding.p6,
+      lineHeight: Sizes.s13,
     },
   });

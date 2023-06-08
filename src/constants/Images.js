@@ -1,4 +1,4 @@
-export const IMSGES = {
+export const IMAGES = {
   logo: require('../assets/Logo.png'),
   splash: require('../assets/splash.png'),
   OnBoard: require('../assets/OnBoard.png'),

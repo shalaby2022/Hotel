@@ -1,6 +1,13 @@
 import {StyleSheet} from 'react-native';
 import {Color} from '../../constants/Colors';
-import {FontSize, Padding, ScreenWidth} from '../../constants/Styling';
+import {
+  Borders,
+  FontSize,
+  Margin,
+  Padding,
+  ScreenWidth,
+  Sizes,
+} from '../../constants/Styling';
 
 export default () =>
   StyleSheet.create({
@@ -8,14 +15,14 @@ export default () =>
       flex: 1,
     },
     imgWrapper: {
-      width: 60,
-      height: 60,
+      width: Sizes.s25,
+      height: Sizes.s25,
       backgroundColor: Color.primary,
-      borderRadius: 7,
+      borderRadius: Sizes.s0,
       justifyContent: 'center',
       alignItems: 'center',
       alignSelf: 'center',
-      marginTop: 65,
+      marginTop: Sizes.s26,
     },
     img: {
       tintColor: Color.white,
@@ -23,8 +30,8 @@ export default () =>
     btnsWrapper: {
       flexDirection: 'row',
       justifyContent: 'space-between',
-      height: 66,
-      marginVertical: 40,
+      height: Sizes.s26,
+      marginVertical: Sizes.s19,
     },
     btnWrapper: {
       width: '50%',
@@ -52,42 +59,41 @@ export default () =>
       fontSize: FontSize.h1,
       color: Color.black,
       fontWeight: '700',
-      marginBottom: 20,
-      paddingStart: 25,
+      marginBottom: Margin.m3,
+      paddingStart: Padding.p6,
     },
     input: {
       backgroundColor: Color.white,
       height: 55,
       width: ScreenWidth - 50,
       marginBottom: 35,
-      fontSize: 16,
-      borderRadius: 25,
-      paddingStart: 20,
+      fontSize: FontSize.h1,
+      borderRadius: Borders.b5,
+      paddingStart: Padding.p3,
       alignSelf: 'center',
     },
     passWrapper: {
       backgroundColor: Color.white,
-      height: 55,
+      height: Sizes.s24,
       width: ScreenWidth - 50,
-      marginBottom: 35,
-      fontSize: 16,
-      borderRadius: 25,
-      paddingStart: 20,
+      marginBottom: Margin.m10,
+      fontSize: FontSize.h1,
+      borderRadius: Borders.b5,
+      paddingStart: Padding.p3,
       alignSelf: 'center',
-      height: 55,
     },
     icon: {
-      width: 20,
-      height: 20,
+      width: Sizes.s9,
+      height: Sizes.s9,
       tintColor: Color.grey,
       position: 'relative',
-      top: -39,
+      top: -Sizes.s19,
       left: ScreenWidth - 126,
       padding: Padding.p1,
     },
     forgetPass: {
       alignSelf: 'flex-end',
-      paddingHorizontal: 25,
+      paddingHorizontal: Padding.p6,
       color: Color.black,
     },
   });

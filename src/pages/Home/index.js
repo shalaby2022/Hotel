@@ -1,46 +1,32 @@
-import {View, Text, Image, TouchableOpacity, FlatList} from 'react-native';
-import React, {useState} from 'react';
+import {
+  View,
+  Text,
+  Image,
+  TouchableOpacity,
+  FlatList,
+  ActivityIndicator,
+} from 'react-native';
+import React, {useEffect, useState} from 'react';
 import styles from './styles';
-import {IMSGES} from '../../constants/Images';
+import {IMAGES} from '../../constants/Images';
 import HotelCard from '../../components/HotelCard';
+import {
+  API_KEY,
+  placeType,
+  latitude,
+  longitude,
+  radius,
+} from '../../constants/Keys';
+import axios from 'axios';
+import {Color} from '../../constants/Colors';
 
-const Home = () => {
+const Home = ({navigation}) => {
   const buttons = [
     {id: 1, text: 'Recommend'},
     {id: 2, text: 'Popular'},
     {id: 3, text: 'Trending'},
   ];
 
-  const Hotels = [
-    {
-      id: 1,
-      rate: 4.6,
-      header: 'Tropicasa De Hotel',
-      title: 'Amsterdam, Netherlands',
-      img: IMSGES.hotel,
-    },
-    {
-      id: 2,
-      rate: 4.2,
-      header: 'Luxe Hotel',
-      title: 'Jakarta, Indonesia',
-      img: IMSGES.hotel,
-    },
-    {
-      id: 3,
-      rate: 4.6,
-      header: 'Tropicasa De Hotel',
-      title: 'Amsterdam, Netherlands',
-      img: IMSGES.hotel,
-    },
-    {
-      id: 4,
-      rate: 3.9,
-      header: 'Luxe Hotel',
-      title: 'Jakarta, Indonesia',
-      img: IMSGES.hotel,
-    },
-  ];
   const [selected, setSelected] = useState(1);
 
   const handlePress = val => {
@@ -48,11 +34,37 @@ const Home = () => {
   };
 
   const renderItem = ({item}) => {
-    return <HotelCard item={item} />;
+    return <HotelCard item={item} navigation={navigation} />;
   };
+
+  const [isLoading, setIsLoading] = useState(false);
+  const [hotels, setHotels] = useState([]);
+  const [error, setError] = useState('');
+
+  const getHotels = async () => {
+    setIsLoading(true);
+    try {
+      const response = await axios.get(
+        `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=${radius}&type=${placeType}&key=${API_KEY}`,
+      );
+      console.log('Respponse', response.data.results);
+      setIsLoading(false);
+      setHotels(response.data.results);
+    } catch (error) {
+      setIsLoading(false);
+      setError(error.message);
+    }
+  };
+
+  useEffect(() => {
+    navigation.addListener('focus', () => {
+      getHotels();
+    });
+  }, [navigation]);
+
   return (
     <View style={styles().container}>
-      <Image source={IMSGES.award} style={styles().img} />
+      <Image source={IMAGES.award} style={styles().img} />
       <View style={styles().headerWrapper}>
         <Text style={styles().Header}>Good Morning, Stephanie!</Text>
       </View>
@@ -71,13 +83,27 @@ const Home = () => {
           ))}
       </View>
 
-      <FlatList
-        data={Hotels}
-        keyExtractor={(item, index) => index.toString()}
-        renderItem={renderItem}
-        horizontal
-        showsHorizontalScrollIndicator={false}
-      />
+      {hotels && (
+        <FlatList
+          data={hotels}
+          keyExtractor={(item, index) => index.toString()}
+          renderItem={renderItem}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+        />
+      )}
+
+      {isLoading && (
+        <View style={styles().errorWrapper}>
+          <ActivityIndicator size={'large'} color={Color.primary} />
+        </View>
+      )}
+
+      {error && (
+        <View style={styles().errorWrapper}>
+          <Text style={styles().errorText}>{error}</Text>
+        </View>
+      )}
     </View>
   );
 };

@@ -1,34 +1,40 @@
 import {StyleSheet} from 'react-native';
-import {FontSize, ScreenWidth} from '../../constants/Styling';
+import {
+  FontSize,
+  Margin,
+  Padding,
+  ScreenWidth,
+  Sizes,
+} from '../../constants/Styling';
 import {Color} from '../../constants/Colors';
 
 export default () =>
   StyleSheet.create({
     container: {
       flex: 1,
-      paddingVertical: 20,
+      paddingVertical: Padding.p3,
     },
     img: {
-      width: 30,
-      height: 30,
+      width: Sizes.s14,
+      height: Sizes.s14,
       alignSelf: 'flex-end',
       marginHorizontal: 37,
-      marginTop: 25,
+      marginTop: Margin.m5,
     },
     headerWrapper: {
-      marginStart: 25,
+      marginStart: Margin.m5,
       width: ScreenWidth * (190 / 375),
     },
     Header: {
       fontWeight: '700',
       fontSize: FontSize.h7,
-      lineHeight: 50,
-      marginTop: 40,
+      lineHeight: Sizes.s24,
+      marginTop: Sizes.s19,
     },
     btnsWrapper: {
       flexDirection: 'row',
-      marginTop: 50,
-      marginBottom: 65,
+      marginTop: Sizes.s24,
+      marginBottom: Sizes.s25,
     },
     btnWrapper: {
       flex: 1,
@@ -41,10 +47,21 @@ export default () =>
       fontSize: FontSize.h2,
     }),
     circle: (buttonId, selected) => ({
-      width: 14,
-      height: 14,
-      borderRadius: 7,
-      marginVertical: 7,
+      width: Sizes.s3,
+      height: Sizes.s3,
+      borderRadius: Sizes.s0,
+      marginVertical: Sizes.s0,
       backgroundColor: buttonId === selected ? Color.primary : 'transparent',
     }),
+    errorWrapper: {
+      flex: 5,
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    errorText: {
+      fontWeight: '600',
+      fontSize: FontSize.h3,
+      marginBottom: 140,
+      color: Color.primary,
+    },
   });

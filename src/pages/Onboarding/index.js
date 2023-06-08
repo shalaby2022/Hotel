@@ -1,18 +1,20 @@
 import {View, Text, Image} from 'react-native';
 import React from 'react';
-import {IMSGES} from '../../constants/Images';
+import {IMAGES} from '../../constants/Images';
 import Button from '../../components/Button';
 import styles from './styles';
 import {ScreenHeight, ScreenWidth} from '../../constants/Styling';
+import {NavigateToHome} from '../../Navigations/Navigators';
 
-const Onboarding = () => {
+const Onboarding = ({navigation}) => {
   const handlePress = () => {
-    console.log('Next');
+    NavigateToHome(navigation);
   };
+
   return (
     <View style={styles().container}>
       <Image
-        source={IMSGES.OnBoard}
+        source={IMAGES.OnBoard}
         style={{width: '80%', height: ScreenHeight * (349 / 772)}}
       />
       <Text style={styles().headerText}>Travel with no worry</Text>
