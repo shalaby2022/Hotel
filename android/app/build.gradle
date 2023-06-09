@@ -1,6 +1,8 @@
 apply plugin: "com.android.application"
 apply plugin: "com.facebook.react"
 
+apply plugin: 'com.google.gms.google-services'
+
 import com.android.build.OutputFile
 
 /**
@@ -111,6 +113,12 @@ android {
         }
     }
     signingConfigs {
+        release {
+            storeFile file('my_hotel_name.keystore')
+            storePassword '123456'
+            keyAlias 'hotel_alias'
+            keyPassword '123456'
+        }
         debug {
             storeFile file('debug.keystore')
             storePassword 'android'
@@ -120,7 +128,7 @@ android {
     }
     buildTypes {
         debug {
-            signingConfig signingConfigs.debug
+            signingConfig signingConfigs.release
         }
         release {
             // Caution! In production, you need to generate your own keystore file.
