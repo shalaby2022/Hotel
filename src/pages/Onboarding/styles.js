@@ -22,5 +22,6 @@ export default () =>
       marginTop: Margin.m3,
       paddingStart: Padding.p6,
       lineHeight: Sizes.s13,
+      paddingEnd: Padding.p6,
     },
   });

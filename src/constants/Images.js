@@ -7,4 +7,5 @@ export const IMAGES = {
   award: require('../assets/award.png'),
   hotel: require('../assets/hotel.png'),
   star: require('../assets/star.png'),
+  logout: require('../assets/logout.png'),
 };

@@ -6,7 +6,6 @@ import {API_KEY} from '../../constants/Keys';
 
 const DetailCard = ({details}) => {
   const Review = Math.floor(Math.random() * 10000);
-  console.log('details: ', details);
   const imgUrl = `https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photo_reference=${details?.photos[0]?.photo_reference}&key=${API_KEY}`;
   return (
     <View style={styles().hotelWrapper}>

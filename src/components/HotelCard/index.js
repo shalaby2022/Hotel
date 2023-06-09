@@ -5,7 +5,7 @@ import {
   ImageBackground,
   TouchableOpacity,
 } from 'react-native';
-import React from 'react';
+import React, {memo} from 'react';
 import styles from './styles';
 import {IMAGES} from '../../constants/Images';
 import {API_KEY} from '../../constants/Keys';
@@ -34,4 +34,4 @@ const HotelCard = ({item, navigation}) => {
   );
 };
 
-export default HotelCard;
+export default memo(HotelCard);

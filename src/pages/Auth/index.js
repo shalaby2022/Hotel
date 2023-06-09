@@ -5,7 +5,7 @@ import {IMAGES} from '../../constants/Images';
 import Login from './Login';
 import SignUp from './Register';
 
-const Auth = () => {
+const Auth = ({navigation}) => {
   const [screen, setScreen] = useState(true);
   return (
     <View style={styles().container}>
@@ -27,7 +27,11 @@ const Auth = () => {
         </TouchableOpacity>
       </View>
       {/* screens */}
-      {screen == 1 ? <Login /> : <SignUp />}
+      {screen == 1 ? (
+        <Login navigation={navigation} />
+      ) : (
+        <SignUp navigation={navigation} />
+      )}
     </View>
   );
 };

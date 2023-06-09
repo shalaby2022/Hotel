@@ -3,6 +3,7 @@ import {
   Borders,
   FontSize,
   Margin,
+  Padding,
   ScreenHeight,
   ScreenWidth,
   Sizes,
@@ -12,8 +13,8 @@ import {Color} from '../../constants/Colors';
 export default () =>
   StyleSheet.create({
     container: {
-      width: 290,
-      height: 435,
+      width: ScreenWidth * 0.7,
+      height: ScreenHeight * 0.5,
       marginHorizontal: Margin.m2,
       borderRadius: Borders.b3,
       overflow: 'hidden',
@@ -50,11 +51,13 @@ export default () =>
     hotelInfo: {
       color: Color.white,
       paddingTop: 9,
-      fontSize: FontSize.h2,
+      fontSize: FontSize.h1,
+      flexShrink: 1.4,
     },
     textWrapper: {
       position: 'absolute',
       bottom: Sizes.s14,
-      left: Sizes.s17,
+      left: Sizes.s12,
+      paddingEnd: Padding.p6,
     },
   });

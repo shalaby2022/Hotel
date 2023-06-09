@@ -10,6 +10,10 @@ export const NavigateToOnboarding = navigation => {
   navigation.navigate('Onboarding');
 };
 
+export const NavigateToSplash = navigation => {
+  navigation.navigate('Splash');
+};
+
 export const NavigateBack = navigation => {
   navigation.goBack();
 };

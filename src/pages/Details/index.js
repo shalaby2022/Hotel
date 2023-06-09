@@ -3,7 +3,6 @@ import React from 'react';
 import styles from './styles';
 import Button from '../../components/Button';
 import DetailCard from './DetailCard';
-import {IMAGES} from '../../constants/Images';
 import {NavigateBack} from '../../Navigations/Navigators';
 
 const Description = ({navigation, route}) => {
@@ -38,7 +37,7 @@ const Description = ({navigation, route}) => {
       <Button
         text={'Back'}
         size={'40%'}
-        positioning={90}
+        positioning={30}
         handlePress={handlePress}
       />
     </View>

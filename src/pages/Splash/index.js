@@ -8,10 +8,10 @@ const Splash = ({navigation}) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       NavigateToOnboarding(navigation);
-    }, 2000);
+    }, 1500);
 
     return () => clearInterval(timer);
-  });
+  }, [navigation]);
 
   return <ImageBackground source={IMAGES.splash} style={styles().container} />;
 };

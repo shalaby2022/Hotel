@@ -5,8 +5,9 @@ import {
   TouchableOpacity,
   FlatList,
   ActivityIndicator,
+  RefreshControl,
 } from 'react-native';
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useContext} from 'react';
 import styles from './styles';
 import {IMAGES} from '../../constants/Images';
 import HotelCard from '../../components/HotelCard';
@@ -19,8 +20,14 @@ import {
 } from '../../constants/Keys';
 import axios from 'axios';
 import {Color} from '../../constants/Colors';
+import auth from '@react-native-firebase/auth';
+import {NavigateToOnboarding} from '../../Navigations/Navigators';
+import {AuthenticatedUserContext} from '../../Context/AuthContext';
+import {displayToast} from '../../services/Toaster';
 
 const Home = ({navigation}) => {
+  const {user} = useContext(AuthenticatedUserContext);
+
   const buttons = [
     {id: 1, text: 'Recommend'},
     {id: 2, text: 'Popular'},
@@ -47,7 +54,6 @@ const Home = ({navigation}) => {
       const response = await axios.get(
         `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=${radius}&type=${placeType}&key=${API_KEY}`,
       );
-      console.log('Respponse', response.data.results);
       setIsLoading(false);
       setHotels(response.data.results);
     } catch (error) {
@@ -62,11 +68,34 @@ const Home = ({navigation}) => {
     });
   }, [navigation]);
 
+  const [isRefreshing, setIsRefreshing] = useState(false);
+  const onRefresh = async () => {
+    setIsRefreshing(true);
+    await getHotels();
+    setIsRefreshing(false);
+  };
+
+  const handleLogOut = () => {
+    auth()
+      .signOut()
+      .then(
+        () => displayToast('success', 'signed out Successfully!', 2500),
+        NavigateToOnboarding(navigation),
+      );
+  };
+
   return (
     <View style={styles().container}>
-      <Image source={IMAGES.award} style={styles().img} />
+      <View style={styles().topIconsWrapper}>
+        <Image source={IMAGES.award} style={styles().img} />
+        <TouchableOpacity onPress={handleLogOut}>
+          <Image source={IMAGES.logout} style={styles().img2} />
+        </TouchableOpacity>
+      </View>
       <View style={styles().headerWrapper}>
-        <Text style={styles().Header}>Good Morning, Stephanie!</Text>
+        <Text style={styles().Header}>
+          Good Morning, {user?._user?.displayName || 'Stephani'}!
+        </Text>
       </View>
       <View style={styles().btnsWrapper}>
         {buttons &&
@@ -90,6 +119,13 @@ const Home = ({navigation}) => {
           renderItem={renderItem}
           horizontal
           showsHorizontalScrollIndicator={false}
+          refreshControl={
+            <RefreshControl
+              refreshing={isRefreshing}
+              onRefresh={onRefresh}
+              colors={[Color.primary]}
+            />
+          }
         />
       )}
 

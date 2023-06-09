@@ -52,6 +52,7 @@ export default () =>
     btnText: {
       fontSize: FontSize.h3,
       fontWeight: '700',
+      color: Color.black,
     },
 
     //////////////// Login Screen   ////////////////
@@ -71,6 +72,7 @@ export default () =>
       borderRadius: Borders.b5,
       paddingStart: Padding.p3,
       alignSelf: 'center',
+      color: Color.black,
     },
     passWrapper: {
       backgroundColor: Color.white,

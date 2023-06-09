@@ -1,14 +1,33 @@
 import {View, Text, Image} from 'react-native';
-import React from 'react';
+import React, {useContext, useEffect} from 'react';
 import {IMAGES} from '../../constants/Images';
 import Button from '../../components/Button';
 import styles from './styles';
 import {ScreenHeight, ScreenWidth} from '../../constants/Styling';
-import {NavigateToHome} from '../../Navigations/Navigators';
+import {NavigateToAuth, NavigateToHome} from '../../Navigations/Navigators';
+import {AuthenticatedUserContext} from '../../Context/AuthContext';
+import auth from '@react-native-firebase/auth';
 
 const Onboarding = ({navigation}) => {
+  const {user, setUser, setIsLoading} = useContext(AuthenticatedUserContext);
+
+  const onAuthStateChanged = user => {
+    setIsLoading(true);
+    setUser(user);
+    setIsLoading(false);
+  };
+
+  useEffect(() => {
+    const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
+    return subscriber; // unsubscribe on unmount
+  }, []);
+
   const handlePress = () => {
-    NavigateToHome(navigation);
+    if (user) {
+      NavigateToHome(navigation);
+    } else {
+      NavigateToAuth(navigation);
+    }
   };
 
   return (

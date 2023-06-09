@@ -1,4 +1,4 @@
-import {Dimensions, StyleSheet} from 'react-native';
+import {StyleSheet} from 'react-native';
 import {
   FontSize,
   Margin,
@@ -18,7 +18,7 @@ export default () =>
       width: ScreenWidth - 50,
       backgroundColor: '#fff',
       alignSelf: 'center',
-      marginTop: 40,
+      marginTop: Margin.m10,
       flexDirection: 'row',
       alignItems: 'center',
       padding: Sizes.s3,
@@ -33,7 +33,7 @@ export default () =>
       borderRadius: Sizes.s2,
     },
     hotelDetailsWrapper: {
-      flex: 1.6,
+      flex: 1.4,
     },
     hotelTitle: {
       fontWeight: '700',
@@ -45,12 +45,14 @@ export default () =>
       fontSize: FontSize.h0,
       color: Color.grey,
       marginBottom: Margin.m0,
+      flexShrink: 1,
     },
     ratingWrapper: {
       flexDirection: 'row',
       alignItems: 'center',
-      width: '75%',
+      width: ScreenWidth * 0.42,
       justifyContent: 'space-between',
+      alignItems: 'center',
     },
     rateImg: {
       width: Sizes.s9,
@@ -69,8 +71,9 @@ export default () =>
       paddingHorizontal: Padding.p10,
     },
     detailText: {
-      lineHeight: 25,
+      lineHeight: Sizes.s10,
       fontSize: FontSize.h1,
       paddingBottom: Padding.P0,
+      color: Color.grey,
     },
   });
