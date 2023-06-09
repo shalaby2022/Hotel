@@ -28,8 +28,8 @@ export default () =>
       flex: 1,
     },
     hotelImg: {
-      width: 105,
-      height: 105,
+      width: ScreenWidth / 3.9,
+      height: ScreenWidth / 3.9,
       borderRadius: Sizes.s2,
     },
     hotelDetailsWrapper: {

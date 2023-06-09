@@ -13,7 +13,7 @@ const DetailCard = ({details}) => {
         <Image source={{uri: imgUrl}} style={styles().hotelImg} />
       </View>
       <View style={styles().hotelDetailsWrapper}>
-        <Text style={styles().hotelTitle}>{details.name}</Text>
+        <Text style={styles().hotelTitle}>{details?.name?.slice(0, 25)}</Text>
         <Text style={styles().hotelLocation}>{details.vicinity}</Text>
         <View style={styles().ratingWrapper}>
           <Image source={IMAGES.star} style={styles().rateImg} />
