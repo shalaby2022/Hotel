@@ -112,7 +112,11 @@ const Home = ({navigation}) => {
           ))}
       </View>
 
-      {hotels && (
+      {isLoading ? (
+        <View style={styles().errorWrapper}>
+          <ActivityIndicator size={'large'} color={Color.primary} />
+        </View>
+      ) : (
         <FlatList
           data={hotels}
           keyExtractor={(item, index) => index.toString()}
@@ -127,12 +131,6 @@ const Home = ({navigation}) => {
             />
           }
         />
-      )}
-
-      {isLoading && (
-        <View style={styles().errorWrapper}>
-          <ActivityIndicator size={'large'} color={Color.primary} />
-        </View>
       )}
 
       {error && (
